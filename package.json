@@ -1,0 +1,42 @@
+{
+  "name": "github",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node ./src/index.ts",
+    "lint": "npx prettier --write .",
+    "test": "mocha -r ts-node/register 'src/test/*.ts'",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "keywords": [],
+  "author": "smpny7",
+  "license": "ISC",
+  "description": "",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.182",
+    "@types/mocha": "^9.1.1",
+    "lodash": "^4.17.21",
+    "mocha": "^10.0.0",
+    "prettier": "2.6.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "@octokit/rest": "^18.12.0",
+    "dotenv": "^16.0.1",
+    "git-cz": "^4.9.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1"
+  }
+}
