@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node ./src/index.ts",
+    "scraping": "ts-node ./src/index.ts",
+    "analysis": "ts-node ./src/analysis.ts",
     "lint": "npx prettier --write .",
     "test": "mocha -r ts-node/register 'src/test/*.ts'",
+    "migrate": "db-migrate up",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
@@ -34,9 +36,12 @@
   },
   "dependencies": {
     "@octokit/rest": "^18.12.0",
+    "db-migrate": "^0.11.13",
+    "db-migrate-mysql": "^2.2.0",
     "dotenv": "^16.0.1",
     "git-cz": "^4.9.0",
     "husky": "^8.0.1",
-    "lint-staged": "^12.4.1"
+    "lint-staged": "^12.4.1",
+    "mysql2": "^2.3.3"
   }
 }
