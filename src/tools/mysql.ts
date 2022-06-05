@@ -42,4 +42,30 @@ export class MySQL {
 
     return response[0][0]
   }
+
+  public getUsersFromIssuePullRequest = async () => {
+    const response = await this.connection.query(
+      `SELECT DISTINCT user_id FROM issue_pull_request`
+    )
+
+    return response[0]
+  }
+
+  public getTotalCountFromUserId = async (user_id: number) => {
+    const response = await this.connection.query(
+      `SELECT COUNT( * ) FROM issue_pull_request WHERE user_id = ?`,
+      [user_id]
+    )
+
+    return response[0]
+  }
+
+  public getCorrespondingCountFromUserId = async (user_id: number) => {
+    const response = await this.connection.query(
+      `SELECT COUNT( * ) FROM issue_pull_request WHERE user_id = ? AND is_self_merged = 1`,
+      [user_id]
+    )
+
+    return response[0]
+  }
 }

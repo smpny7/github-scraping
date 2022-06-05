@@ -166,7 +166,7 @@ const getPullRequests = async () => {
   }
 }
 
-;(async () => {
+const getIssuePullRequest = async () => {
   const mysql = await new MySQL().createConnection()
   const issues = await mysql.getIssuesWithAssigned()
 
@@ -180,10 +180,26 @@ const getPullRequests = async () => {
         pull_request_id: pull_request.url,
         issue_id: issue.id,
         user_id: issue.assignee_id,
-        is_self_merged: pull_request.merged_by_unique_key == issue.assignee_id,
+        is_self_merged: pull_request.user_id == issue.assignee_id,
       }
 
       await mysql.insert('issue_pull_request', row)
+    }
+  })()
+}
+
+;(async () => {
+  const mysql = await new MySQL().createConnection()
+  const users = await mysql.getUsersFromIssuePullRequest()
+
+  ;(async () => {
+    for (let user of users) {
+      const total = await mysql.getTotalCountFromUserId(user.user_id)
+      const count = await mysql.getCorrespondingCountFromUserId(user.user_id)
+
+      console.log(
+        `${user.user_id}: ${count[0]['COUNT( * )']}/${total[0]['COUNT( * )']} completed`
+      )
     }
   })()
 })()
