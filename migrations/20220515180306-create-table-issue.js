@@ -23,7 +23,7 @@ exports.up = function (db) {
       comments_url: 'string',
       events_url: 'string',
       html_url: 'string',
-      id: 'int',
+      id: { type: 'int', primaryKey: true },
       node_id: 'string',
       number: 'int',
       title: 'text',

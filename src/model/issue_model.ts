@@ -1,6 +1,5 @@
 import { Label } from './label_model'
 import { Milestone } from './milestone_model'
-import { PullRequest } from './pull_request_model'
 import { Reaction } from './reaction_model'
 import { User } from './user_model'
 
@@ -35,5 +34,15 @@ export class Issue {
     public reactions: Reaction,
     public timeline_url: string,
     public performed_via_github_app: string
+  ) {}
+}
+
+class PullRequest {
+  constructor(
+    public url: string,
+    public html_url: string,
+    public diff_url: string,
+    public patch_url: string,
+    public merged_at: string
   ) {}
 }

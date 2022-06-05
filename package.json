@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "scraping": "ts-node ./src/index.ts",
-    "analysis": "ts-node ./src/analysis.ts",
+    "dev": "ts-node ./src/index.ts",
     "lint": "npx prettier --write .",
     "test": "mocha -r ts-node/register 'src/test/*.ts'",
     "migrate": "db-migrate up",
@@ -26,6 +25,7 @@
     }
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.182",
     "@types/mocha": "^9.1.1",
     "lodash": "^4.17.21",
@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^18.12.0",
+    "axios": "^0.27.2",
     "db-migrate": "^0.11.13",
     "db-migrate-mysql": "^2.2.0",
     "dotenv": "^16.0.1",
