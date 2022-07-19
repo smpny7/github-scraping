@@ -6,7 +6,8 @@
     "dev": "ts-node ./src/index.ts",
     "lint": "npx prettier --write .",
     "test": "mocha -r ts-node/register 'src/test/*.ts'",
-    "migrate": "db-migrate up",
+    "generate": "prisma generate",
+    "migrate": "prisma migrate dev --name init",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^18.12.0",
+    "@prisma/client": "^4.0.0",
     "axios": "^0.27.2",
     "db-migrate": "^0.11.13",
     "db-migrate-mysql": "^2.2.0",
@@ -43,6 +45,7 @@
     "git-cz": "^4.9.0",
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "prisma": "^4.0.0"
   }
 }
